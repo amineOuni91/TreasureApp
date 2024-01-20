@@ -6,18 +6,18 @@ namespace TreasureApp;
 public class MapManager() : IMapManager
 {
 
-    private Map map;
+    public Map Map { get; set; }
 
     /// <inheritdoc cref="IMapManager.AddMountain(int, int)"/>
     public void AddMountain(int x, int y)
     {
-        map.Cells[x, y].IsMountain = true;
+        Map.Cells[x, y].IsMountain = true;
     }
 
     /// <inheritdoc cref="IMapManager.AddTreasure(int, int, int)"/>
     public void AddTreasure(int x, int y, int count)
     {
-        map.Cells[x, y].TreasureCount = count;
+        Map.Cells[x, y].TreasureCount = count;
     }
 
     /// <inheritdoc cref="IMapManager.AddAdventurer(string, int, int, char, string)"/>
@@ -26,16 +26,16 @@ public class MapManager() : IMapManager
         var adventurer = new Adventurer
         {
             Name = name,
-            Position = map.Cells[x, y],
+            Position = Map.Cells[x, y],
             Orientation = orientation,
             MovementSequence = movementSequence
         };
 
-        map.Adventurers.Add(adventurer);
+        Map.Adventurers.Add(adventurer);
     }
 
     /// <inheritdoc cref="IMapManager.CreateMap"/>"
-    public Map CreateMap(string filePath)
+    public void CreateMap(string filePath)
     {
         try
         {
@@ -56,7 +56,7 @@ public class MapManager() : IMapManager
                         // Dimensions de la carte
                         int width = int.Parse(parts[1]);
                         int height = int.Parse(parts[2]);
-                        map = new Map(width, height);
+                        Map = new Map(width, height);
                         break;
 
                     case "M":
@@ -90,8 +90,6 @@ public class MapManager() : IMapManager
         {
             Console.WriteLine($"Erreur lors de la lecture du fichier d'entrée : {ex.Message}");
         }
-
-        return map;
     }
 
     /// <summary>
@@ -99,11 +97,11 @@ public class MapManager() : IMapManager
     /// </summary>
     public void SimulateMovements()
     {
-        int maxMoves = map.Adventurers.Max(a => a.MovementSequence.Length);
+        int maxMoves = Map.Adventurers.Max(a => a.MovementSequence.Length);
 
         for (int i = 0; i < maxMoves; i++)
         {
-            foreach (var adventurer in map.Adventurers)
+            foreach (var adventurer in Map.Adventurers)
             {
                 if (i < adventurer.MovementSequence.Length)
                 {
@@ -149,7 +147,7 @@ public class MapManager() : IMapManager
 
         if (IsValidPosition(newX, newY))
         {
-            adventurer.Position = map.Cells[newX, newY];
+            adventurer.Position = Map.Cells[newX, newY];
 
             if (adventurer.Position.TreasureCount > 0)
             {
@@ -199,17 +197,17 @@ public class MapManager() : IMapManager
 
     private bool IsValidPosition(int x, int y)
     {
-        if (x < 0 || x >= map.Width || y < 0 || y >= map.Height)
+        if (x < 0 || x >= Map.Width || y < 0 || y >= Map.Height)
         {
             return false;
         }
 
-        if (map.Cells[x, y].IsMountain)
+        if (Map.Cells[x, y].IsMountain)
         {
             return false;
         }
 
-        if (map.Adventurers.Any(a => a.Position == map.Cells[x, y]))
+        if (Map.Adventurers.Any(a => a.Position == Map.Cells[x, y]))
         {
             return false;
         }

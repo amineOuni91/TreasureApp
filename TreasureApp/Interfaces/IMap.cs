@@ -4,6 +4,7 @@ namespace TreasureApp.Interfaces;
 
 public interface IMapManager
 {
+    public Map Map { get; set; }
     /// <summary>
     /// Gets or sets the width.
     /// </summary>
@@ -33,7 +34,7 @@ public interface IMapManager
     /// The map creator.
     /// </summary>
     /// <param name="filePath"> The file path.</param>
-    Map CreateMap(string filePath);
+    void CreateMap(string filePath);
 
     /// <summary>
     /// The movement simulation.

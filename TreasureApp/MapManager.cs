@@ -9,19 +9,19 @@ public class MapManager() : IMapManager
     public Map Map { get; set; }
 
     /// <inheritdoc cref="IMapManager.AddMountain(int, int)"/>
-    public void AddMountain(int x, int y)
+    private void AddMountain(int x, int y)
     {
         Map.Cells[x, y].IsMountain = true;
     }
 
     /// <inheritdoc cref="IMapManager.AddTreasure(int, int, int)"/>
-    public void AddTreasure(int x, int y, int count)
+    private void AddTreasure(int x, int y, int count)
     {
         Map.Cells[x, y].TreasureCount = count;
     }
 
     /// <inheritdoc cref="IMapManager.AddAdventurer(string, int, int, char, string)"/>
-    public void AddAdventurer(string name, int x, int y, char orientation, string movementSequence)
+    private void AddAdventurer(string name, int x, int y, char orientation, string movementSequence)
     {
         var adventurer = new Adventurer
         {

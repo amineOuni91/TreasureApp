@@ -8,19 +8,16 @@ public class MapManager() : IMapManager
 
     public Map Map { get; set; }
 
-    /// <inheritdoc cref="IMapManager.AddMountain(int, int)"/>
     private void AddMountain(int x, int y)
     {
         Map.Cells[x, y].IsMountain = true;
     }
 
-    /// <inheritdoc cref="IMapManager.AddTreasure(int, int, int)"/>
     private void AddTreasure(int x, int y, int count)
     {
         Map.Cells[x, y].TreasureCount = count;
     }
 
-    /// <inheritdoc cref="IMapManager.AddAdventurer(string, int, int, char, string)"/>
     private void AddAdventurer(string name, int x, int y, char orientation, string movementSequence)
     {
         var adventurer = new Adventurer
@@ -88,7 +85,8 @@ public class MapManager() : IMapManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Erreur lors de la lecture du fichier d'entrée : {ex.Message}");
+            Console.WriteLine($"Error reading input file : {ex.Message}");
+            throw;
         }
     }
 
@@ -159,40 +157,26 @@ public class MapManager() : IMapManager
 
     private static void TurnLeft(Adventurer adventurer)
     {
-        switch (adventurer.Orientation)
+        adventurer.Orientation = adventurer.Orientation switch
         {
-            case 'N':
-                adventurer.Orientation = 'O';
-                break;
-            case 'S':
-                adventurer.Orientation = 'E';
-                break;
-            case 'E':
-                adventurer.Orientation = 'N';
-                break;
-            case 'O':
-                adventurer.Orientation = 'S';
-                break;
-        }
+            'N' => 'O',
+            'S' => 'E',
+            'E' => 'N',
+            'O' => 'S',
+            _ => throw new ArgumentOutOfRangeException(nameof(adventurer.Orientation))
+        };
     }
 
     private static void TurnRight(Adventurer adventurer)
     {
-        switch (adventurer.Orientation)
+        adventurer.Orientation = adventurer.Orientation switch
         {
-            case 'N':
-                adventurer.Orientation = 'E';
-                break;
-            case 'S':
-                adventurer.Orientation = 'O';
-                break;
-            case 'E':
-                adventurer.Orientation = 'S';
-                break;
-            case 'O':
-                adventurer.Orientation = 'N';
-                break;
-        }
+            'N' => 'E',
+            'S' => 'O',
+            'E' => 'S',
+            'O' => 'N',
+            _ => throw new ArgumentOutOfRangeException(nameof(adventurer.Orientation))
+        };
     }
 
     private bool IsValidPosition(int x, int y)

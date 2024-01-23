@@ -5,11 +5,6 @@ namespace TreasureApp.Interfaces;
 public interface IMapManager
 {
     public Map Map { get; set; }
-    /// <summary>
-    /// Gets or sets the width.
-    /// </summary>
-    /// <param name="x"> The X axis.</param>
-    /// <param name="y"> The Y axis.</param>
 
     /// <summary>
     /// The map creator.

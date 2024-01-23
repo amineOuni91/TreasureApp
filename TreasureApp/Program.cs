@@ -13,4 +13,4 @@ mapManager.SimulateMovements();
 var resultWriter = new ResultWriter(mapManager.Map);
 resultWriter.WriteOutputFile(outputFile);
 
-Console.WriteLine("Simulation terminée. Résultats enregistrés dans le fichier de sortie.");
+Console.WriteLine("Simulation completed. Results saved in the output file.");

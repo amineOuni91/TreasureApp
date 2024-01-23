@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasureApp", "TreasureApp\TreasureApp.csproj", "{0CE1A293-CACF-4475-99F9-DF00D4D6FEF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreasureApp", "TreasureApp\TreasureApp.csproj", "{0CE1A293-CACF-4475-99F9-DF00D4D6FEF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasureAppTest", "TreasureAppTest\TreasureAppTest.csproj", "{DFEEF857-6DC0-4967-8644-35DA5548A69B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0CE1A293-CACF-4475-99F9-DF00D4D6FEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CE1A293-CACF-4475-99F9-DF00D4D6FEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CE1A293-CACF-4475-99F9-DF00D4D6FEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEEF857-6DC0-4967-8644-35DA5548A69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEEF857-6DC0-4967-8644-35DA5548A69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEEF857-6DC0-4967-8644-35DA5548A69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEEF857-6DC0-4967-8644-35DA5548A69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
